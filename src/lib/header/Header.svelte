@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+	// import logo from './svelte-logo.svg';
+	import logo from '$lib/images/progress-logo-txt.png';
 </script>
 
-<header class="flex py-4 sticky top-0 px-8">
+<header class="flex py-4 sticky top-0 px-8 drop-shadow-md backdrop-blur-sm">
 	<div class="corner flex-1">
 		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+			<img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" />
 		</a>
 	</div>
 
@@ -53,8 +54,8 @@
 	// }
 
 	.corner img {
-		width: 2em;
-		height: 2em;
+		// width: 2em;
+		// height: 2em;
 		object-fit: contain;
 	}
 

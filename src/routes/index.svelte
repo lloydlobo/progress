@@ -28,8 +28,8 @@
 			Progress <strong>rather than</strong> perfection.
 		</sub> -->
 	</div>
-	<super class="text-5xl tracking-wide font-serif text-neutral-600">
-		A collection of projects built along the way with revering progress than perfection.
+	<super class="text-4xl tracking-wide font- text-center text-neutral-600">
+		A collection of projects built along the way while focussing on <b>progress</b> than perfection.
 	</super>
 	<section class="flex">
 		<Counter />
@@ -42,55 +42,61 @@
 		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
 			{#if id % 2 != 0}
 				<!-- inline styles but no variables for property names -->
-				<div class="container left">
-					<div class="project content" style="background-image: url({srcBg});">
-						<h2><a {href}>{name}</a></h2>
-						<p>{content}</p>
-						<sub>{month} {year}</sub>
-						<div class="show-me-the-code">
-							<a href={live}>Live Preview</a>
-							<a {href} {alt}>
-								<div class="icon-github">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor"
-										stroke="currentColor"
-										stroke-width="0"
-										viewBox="0 0 1024 1024"
-										><path
-											stroke="none"
-											d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-										/></svg
-									>
-								</div>
-							</a>
+				<div class="container left text-white">
+					<div class="project content bg-blend-luminosity " style="background-image: url({srcBg});">
+						<div class="project-content p-4 backdrop-blur-sm  ">
+							<h2 class="font-serif font-bold text-xl"><a {href}>{name}</a></h2>
+							<p class="text-white">{content}</p>
+							<sub>{month} {year}</sub>
+							<div class="show-me-the-code">
+								<a href={live}>Live Preview</a>
+								<a {href} {alt}>
+									<div class="icon-github">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="currentColor"
+											stroke="currentColor"
+											stroke-width="0"
+											viewBox="0 0 1024 1024"
+											><path
+												stroke="none"
+												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+											/></svg
+										>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			{/if}
+
 			{#if id % 2 == 0}
-				<div class="container right">
-					<div class="project content" style="background-image: url({srcBg});">
-						<h2><a {href}>{name}</a></h2>
-						<p>{content}</p>
-						<sub>{month} {year}</sub>
-						<div class="show-me-the-code">
-							<a href={live}>Live Preview</a>
-							<a {href} {alt}>
-								<div class="icon-github">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										fill="currentColor"
-										stroke="currentColor"
-										stroke-width="0"
-										viewBox="0 0 1024 1024"
-										><path
-											stroke="none"
-											d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-										/></svg
-									>
-								</div>
-							</a>
+				<!-- inline styles but no variables for property names -->
+				<div class="container right text-white">
+					<div class="project content bg-blend-luminosity " style="background-image: url({srcBg});">
+						<div class="project-content p-4 backdrop-blur-sm">
+							<h2 class="font-serif font-bold text-xl"><a {href}>{name}</a></h2>
+							<p class="text-white">{content}</p>
+							<sub>{month} {year}</sub>
+							<div class="show-me-the-code">
+								<a href={live}>Live Preview</a>
+								<a {href} {alt}>
+									<div class="icon-github">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="currentColor"
+											stroke="currentColor"
+											stroke-width="0"
+											viewBox="0 0 1024 1024"
+											><path
+												stroke="none"
+												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+											/></svg
+										>
+									</div>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -219,7 +225,7 @@
 
 	/* The actual content */
 	.content {
-		padding: 20px 30px;
+		/* padding: 20px 30px; */
 		background-color: white;
 		position: relative;
 		border-radius: 6px;
