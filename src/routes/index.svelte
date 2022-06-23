@@ -10,10 +10,12 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Project Progress" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 </svelte:head>
-<main class="grid gap-y-10 ">
-	<section>
-		<h1 class="title font-serif text-8xl">
+<section class="grid gap-y-10 ">
+	<div class="hero-title text-center">
+		<h1 class="title font-serif mb-0 text-8xl">
 			<span class="welcome">
 				<!-- <picture>
 					<source srcset="svelte-welcome.webp" type="image/webp" />
@@ -22,108 +24,81 @@
 			</span>
 			The Evocreation
 		</h1>
-
-		<h2 class="subtitle text-center">
+		<!-- <sub class="subtitle text-center">
 			Progress <strong>rather than</strong> perfection.
-		</h2>
-		<section class="flex">
-			<Counter />
-		</section>
+		</sub> -->
+	</div>
+	<super class="text-5xl tracking-wide font-serif text-neutral-600">
+		A collection of projects built along the way with revering progress than perfection.
+	</super>
+	<section class="flex">
+		<Counter />
 	</section>
+</section>
 
-	<section>
-		<!-- <Counter /> -->
-		<div class="timeline">
-			{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
-				{#if id % 2 != 0}
-					<!-- inline styles but no variables for property names -->
-					<div class="container left">
-						<div class="project content" style="background-image: url({srcBg});">
-							<h2><a {href}>{name}</a></h2>
-							<p>{content}</p>
-							<sub>{month} {year}</sub>
-							<div class="show-me-the-code">
-								<a href={live}>Live Preview</a>
-								<a {href} {alt}>
-									<div class="icon-github">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											stroke="currentColor"
-											stroke-width="0"
-											viewBox="0 0 1024 1024"
-											><path
-												stroke="none"
-												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-											/></svg
-										>
-									</div>
-								</a>
-							</div>
+<section>
+	<!-- <Counter /> -->
+	<div class="timeline">
+		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
+			{#if id % 2 != 0}
+				<!-- inline styles but no variables for property names -->
+				<div class="container left">
+					<div class="project content" style="background-image: url({srcBg});">
+						<h2><a {href}>{name}</a></h2>
+						<p>{content}</p>
+						<sub>{month} {year}</sub>
+						<div class="show-me-the-code">
+							<a href={live}>Live Preview</a>
+							<a {href} {alt}>
+								<div class="icon-github">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										stroke="currentColor"
+										stroke-width="0"
+										viewBox="0 0 1024 1024"
+										><path
+											stroke="none"
+											d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+										/></svg
+									>
+								</div>
+							</a>
 						</div>
 					</div>
-				{/if}
-				{#if id % 2 == 0}
-					<div class="container right">
-						<div class="project content" style="background-image: url({srcBg});">
-							<h2><a {href}>{name}</a></h2>
-							<p>{content}</p>
-							<sub>{month} {year}</sub>
-							<div class="show-me-the-code">
-								<a href={live}>Live Preview</a>
-								<a {href} {alt}>
-									<div class="icon-github">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
-											stroke="currentColor"
-											stroke-width="0"
-											viewBox="0 0 1024 1024"
-											><path
-												stroke="none"
-												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-											/></svg
-										>
-									</div>
-								</a>
-							</div>
+				</div>
+			{/if}
+			{#if id % 2 == 0}
+				<div class="container right">
+					<div class="project content" style="background-image: url({srcBg});">
+						<h2><a {href}>{name}</a></h2>
+						<p>{content}</p>
+						<sub>{month} {year}</sub>
+						<div class="show-me-the-code">
+							<a href={live}>Live Preview</a>
+							<a {href} {alt}>
+								<div class="icon-github">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										fill="currentColor"
+										stroke="currentColor"
+										stroke-width="0"
+										viewBox="0 0 1024 1024"
+										><path
+											stroke="none"
+											d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+										/></svg
+									>
+								</div>
+							</a>
 						</div>
 					</div>
-				{/if}
-			{/each}
-		</div>
-	</section>
-</main>
+				</div>
+			{/if}
+		{/each}
+	</div>
+</section>
 
-<!-- <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style> -->
 <style>
 	.project {
 		background-image: var(--background-image);
@@ -145,11 +120,10 @@
 		box-sizing: border-box;
 	}
 
-	.title h1 {
-		font-family: var(--font-serif);
-		font-weight: 700;
-		color: red;
+	.title {
+		font-family: Georgia, 'Times New Roman', Times, serif;
 	}
+
 	.project {
 		/* background-position: center; */
 		background-clip: border-box;
@@ -193,7 +167,8 @@
 		height: 25px;
 		right: -17px;
 		background-color: white;
-		border: 4px solid #ff9f55;
+		/* border: 4px solid rgb(255, 62, 0); */
+		@apply border-orange-600 border-solid border-4;
 		top: 15px;
 		border-radius: 50%;
 		z-index: 1;

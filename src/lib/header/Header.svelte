@@ -3,8 +3,8 @@
 	import logo from './svelte-logo.svg';
 </script>
 
-<header>
-	<div class="corner">
+<header class="flex py-4 sticky top-0 px-8">
+	<div class="corner flex-1">
 		<a href="https://kit.svelte.dev">
 			<img src={logo} alt="SvelteKit" />
 		</a>
@@ -33,24 +33,24 @@
 	</div>
 </header>
 
-<style>
+<style lang="scss">
 	header {
 		display: flex;
 		justify-content: space-between;
 	}
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+	// .corner {
+	// 	width: 3em;
+	// 	height: 3em;
+	// }
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+	// .corner a {
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: 100%;
+	// 	height: 100%;
+	// }
 
 	.corner img {
 		width: 2em;
@@ -61,18 +61,19 @@
 	nav {
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
+		// align-items: flex-end;
+		/* --background: rgba(255, 255, 255, 0.7); */
 	}
 
-	svg {
+	/* svg {
 		width: 2em;
 		height: 3em;
 		display: block;
-	}
+	} */
 
-	path {
+	/* path {
 		fill: var(--background);
-	}
+	} */
 
 	ul {
 		position: relative;
