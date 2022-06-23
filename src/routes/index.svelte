@@ -13,12 +13,12 @@
 </svelte:head>
 <main class="grid gap-y-10 ">
 	<section>
-		<h1 class="title text-6xl">
+		<h1 class="title font-serif text-8xl">
 			<span class="welcome">
-				<picture>
+				<!-- <picture>
 					<source srcset="svelte-welcome.webp" type="image/webp" />
 					<img src="svelte-welcome.png" alt="Welcome" />
-				</picture>
+				</picture> -->
 			</span>
 			The Evocreation
 		</h1>
@@ -143,6 +143,12 @@
 
 	* {
 		box-sizing: border-box;
+	}
+
+	.title h1 {
+		font-family: var(--font-serif);
+		font-weight: 700;
+		color: red;
 	}
 	.project {
 		/* background-position: center; */
