@@ -4,7 +4,7 @@
 	import logo from '$lib/images/progress-logo-txt.png';
 </script>
 
-<header class="flex py-4 sticky top-0 px-8 drop-shadow-md backdrop-blur-sm">
+<header class="z-50 flex py-4 sticky top-0 px-8 drop-shadow-md backdrop-blur-sm">
 	<div class="corner flex-1">
 		<a href="https://kit.svelte.dev">
 			<img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" />
