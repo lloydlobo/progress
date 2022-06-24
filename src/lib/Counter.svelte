@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
-	import { StoreCreations } from '$lib/db';
+	import { StoreCreations } from '$lib/store';
 
 	$: countCreations = $StoreCreations.length;
 	let count = 0;

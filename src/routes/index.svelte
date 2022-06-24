@@ -1,6 +1,8 @@
 <script context="module" lang="ts">
-	import { StoreCreations } from '$lib/db';
+	import { StoreCreations } from '$lib/store';
 	export const prerender = true;
+
+	// function trimStringTemplateLiterals(str: string) { const div = document.createElement('div'); div.innerHTML = str.trim().slice(0, str.length); document.body.appendChild(div); }
 </script>
 
 <script lang="ts">
@@ -17,16 +19,11 @@
 	<div class="hero-title text-center">
 		<h1 class="title font-serif mb-0 text-8xl">
 			<span class="welcome">
-				<!-- <picture>
-					<source srcset="svelte-welcome.webp" type="image/webp" />
-					<img src="svelte-welcome.png" alt="Welcome" />
-				</picture> -->
+				<!-- <picture> <source srcset="svelte-welcome.webp" type="image/webp" /> <img src="svelte-welcome.png" alt="Welcome" /> </picture> -->
 			</span>
 			The Evocreation
 		</h1>
-		<!-- <sub class="subtitle text-center">
-			Progress <strong>rather than</strong> perfection.
-		</sub> -->
+		<!-- <sub class="subtitle text-center"> Progress <strong>rather than</strong> perfection.  </sub> -->
 	</div>
 	<super class="text-4xl tracking-wide font- text-center text-neutral-600">
 		A collection of projects built along the way while focussing on <b>progress</b> than perfection.
@@ -35,9 +32,8 @@
 		<Counter />
 	</section>
 </section>
-
+<!-- {#each $StoreCodepen as { id, html }} {#if id >= 0} {trimStringTemplateLiterals(html)} {/if} {/each} -->
 <section>
-	<!-- <Counter /> -->
 	<div class="timeline">
 		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
 			{#if id % 2 != 0}
