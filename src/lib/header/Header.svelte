@@ -4,11 +4,18 @@
 	import logo from '$lib/images/progress-logo-txt.png';
 </script>
 
-<header class="z-50 flex py-4 sticky top-0 px-8 drop-shadow-md backdrop-blur-sm">
+<header
+	class="z-50 flex items-center justify-center py-4 max-w-7xl mx-auto sticky top-0 px-8 drop-shadow-md backdrop-blur-sm"
+>
 	<div class="corner flex-1">
-		<a href="/">
-			<img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" />
-		</a>
+		<div class="logo text-lg font-serif mb-0  hover:text-gray-900">
+			<a href="/" class="flex gap-0 text-neutral hover:text-gray-900 tracking-widest"
+				><span class="bold">ev<span class=" text-red-700 font-bold">o</span></span><span class=""
+					>creat<span class="">i</span><span class="font-bold text-red-700">o</span>n</span
+				></a
+			>
+		</div>
+		<!-- <img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" /> -->
 	</div>
 
 	<nav>
@@ -122,5 +129,8 @@
 
 	a:hover {
 		color: var(--accent-color);
+	}
+	.logo a:hover {
+		@apply text-gray-900 no-underline shadow-sm transition-all ease-in-out duration-200 animate-pulse;
 	}
 </style>

@@ -27,7 +27,7 @@
 		<!-- <sub class="subtitle text-center"> Progress <strong>rather than</strong> perfection.  </sub> -->
 	</div>
 
-	<super class="text-4xl tracking-wide font- text-center text-neutral-600">
+	<super class="text-4xl tracking-wide font- text-center text-gray-600 ">
 		A collection of projects built along the way while focussing on <b>progress</b> than perfection.
 	</super>
 
@@ -46,13 +46,12 @@
 					<div class="project bg-cover overflow-hidden content bg-blend-multiply">
 						<!-- style="background-image: url({srcBg});" -->
 						<div class="project-content p-4 backdrop-blur-sm  ">
-							<h2 class="font-serif font-bold text-xl">
-								<a class="text-neutral-600 font-thin text-2xl" {href}>{name}</a>
+							<h2 class="font-serif font-bold text-xl mb-3">
+								<a class="text-neutral font-thin text-2xl" {href}>{name}</a>
 							</h2>
 							<p class="">{content}</p>
 							<sub>{month} {year}</sub>
-							<div class="show-me-the-code">
-								<a href={live}>Live Preview</a>
+							<div class="py-2 show-me-the-code items-center gap-2 flex align-center justify-start">
 								<a {href} {alt}>
 									<div class="icon-github">
 										<svg
@@ -67,6 +66,11 @@
 										>
 									</div>
 								</a>
+								<a
+									href={live}
+									class="btn-outline bg-white text-xs btn-ghost border-slate-400 hover:no-underline rounded-2xl p-1 px-4 "
+									>Live</a
+								>
 							</div>
 						</div>
 					</div>
@@ -79,13 +83,12 @@
 					<div class="project content bg-blend-luminosity">
 						<!-- style="background-image: url({srcBg}); -->
 						<div class="project-content p-4 backdrop-blur-sm">
-							<h2 class="font-serif font-bold text-xl">
-								<a class="text-neutral-600 font-thin text-2xl" {href}>{name}</a>
+							<h2 class="font-serif font-bold text-xl mb-3">
+								<a class="text-neutral-600 text-neutral font-light text-2xl" {href}>{name}</a>
 							</h2>
 							<p class=" ">{content}</p>
 							<sub>{month} {year}</sub>
-							<div class="show-me-the-code">
-								<a href={live}>Live Preview</a>
+							<div class="py-2 show-me-the-code items-center gap-3 flex align-center justify-start">
 								<a {href} {alt}>
 									<div class="icon-github">
 										<svg
@@ -100,6 +103,11 @@
 										>
 									</div>
 								</a>
+								<a
+									href={live}
+									class="btn-outline bg-white text-xs btn-ghost border-slate-400 hover:no-underline rounded-2xl p-1 px-4 "
+									>Live</a
+								>
 							</div>
 						</div>
 					</div>
@@ -271,50 +279,8 @@
 	}
 
 	/* icons */
-	.show-me-the-code {
-		display: flex;
-		gap: 0.8rem;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: center;
-	}
-
 	.icon-github {
 		width: 3ch;
 		height: auto;
-	}
-
-	/* Media queries - Responsive timeline on screens less than 600px wide */
-	@media screen and (max-width: 600px) {
-		/* Place the timelime to the left */
-		.timeline::after {
-			left: 31px;
-		}
-
-		/* Full-width containers */
-		.container {
-			width: 100%;
-			padding-left: 70px;
-			padding-right: 25px;
-		}
-
-		/* Make sure that all arrows are pointing leftwards */
-		.container::before {
-			left: 60px;
-			border: medium solid white;
-			border-width: 10px 10px 10px 0;
-			border-color: transparent white transparent transparent;
-		}
-
-		/* Make sure all circles are at the same spot */
-		.left::after,
-		.right::after {
-			left: 15px;
-		}
-
-		/* Make all right containers behave like the left ones */
-		.right {
-			left: 0%;
-		}
 	}
 </style>

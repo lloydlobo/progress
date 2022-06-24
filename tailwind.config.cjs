@@ -1,3 +1,5 @@
+// const adapter = require('@sveltejs/adapter-auto');
+
 const config = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 
@@ -5,7 +7,7 @@ const config = {
 		extend: {}
 	},
 
-	plugins: []
+	plugins: [require('daisyui')]
 };
 
 module.exports = config;
