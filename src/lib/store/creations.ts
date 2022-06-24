@@ -7,9 +7,9 @@ export const StoreCreations = writable([
 		year: 2022,
 		month: 6,
 		name: 'Splitter',
-		href: ' https://github.com/lloydlobo/fem-splitter ',
+		href: 'https://github.com/lloydlobo/fem-splitter',
 		alt: 'Tip Calculator to split your tips per person',
-		live: 'https://fem-splitter.vercel.app/ ',
+		live: 'https://fem-splitter.vercel.app/',
 		content:
 			'Got to split money while tipping? Splitter to the rescue! A Frontend Mentor challenge Project .The Tip Calculator app you may need when situations concerning money may get confusing. Get illusory cred for whipping out an app which does that work for you. Happy Splitting!',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
@@ -19,10 +19,10 @@ export const StoreCreations = writable([
 		year: 2022,
 		month: 6,
 		name: 'Etcher Sketcher',
-		href: ' https://github.com/lloydlobo/etcher-sketcher ',
-		alt: 'Etch A Sketch with a twist Web App',
-		live: ' https://etchersketcher.netlify.app/ ',
-		content: ' Sketch and etch your unique pixel art idea ',
+		href: 'https://github.com/lloydlobo/etcher-sketcher',
+		alt: 'Etch a Sketch',
+		live: 'https://etchersketcher.netlify.app/',
+		content: 'Sketch and etch your unique pixel art idea',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
 	},
 	{
@@ -57,7 +57,7 @@ export const StoreCreations = writable([
 		href: 'https://github.com/lloydlobo/geomeasure',
 		alt: 'Geomeasure App',
 		live: 'https://lloydlobo.github.io/geomeasure/',
-		content: ' Geomeasure measures distance using GPS and that too without without any API',
+		content: 'Geomeasure measures distance using GPS and that too without without any API',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
 	},
 	{
@@ -67,7 +67,7 @@ export const StoreCreations = writable([
 		name: 'Odin Rock Paper Scissors',
 		href: 'https://github.com/lloydlobo/odin-rock-paper-scissors',
 		alt: 'Odin Rock Paper Scissors',
-		live: ' https://odin-rock-paper-scissors.netlify.app/ ',
+		live: 'https://odin-rock-paper-scissors.netlify.app/ ',
 		content:
 			'A simple implementation of grade-school classic “rock paper scissors” for The Odin Project (TOP) web development curriculum.',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
@@ -88,10 +88,10 @@ export const StoreCreations = writable([
 		id: 3,
 		year: 2022,
 		month: 4,
-		name: " Thor's Crypto Security ",
+		name: "Thor's Crypto Security ",
 		href: 'https://github.com/lloydlobo/thors-landing',
 		alt: 'Thor"s Crypto Security',
-		live: 'https://github.com/lloydlobo/odin-thors-landing ',
+		live: 'https://github.com/lloydlobo/odin-thors-landing',
 		content:
 			"Like Thor's mighty hammer, wield the power of security for your crypto needs. Back up your wallet and leave it to Thor to protect it at all costs",
 		srcBg: 'https://picsum.photos/416/300/?blur=2'

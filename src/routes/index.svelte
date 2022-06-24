@@ -15,6 +15,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 </svelte:head>
+
 <section class="grid gap-y-10 ">
 	<div class="hero-title text-center">
 		<h1 class="title font-serif mb-0 text-8xl">
@@ -25,13 +26,16 @@
 		</h1>
 		<!-- <sub class="subtitle text-center"> Progress <strong>rather than</strong> perfection.  </sub> -->
 	</div>
+
 	<super class="text-4xl tracking-wide font- text-center text-neutral-600">
 		A collection of projects built along the way while focussing on <b>progress</b> than perfection.
 	</super>
+
 	<section class="flex">
 		<Counter />
 	</section>
 </section>
+
 <!-- {#each $StoreCodepen as { id, html }} {#if id >= 0} {trimStringTemplateLiterals(html)} {/if} {/each} -->
 <section>
 	<div class="timeline">

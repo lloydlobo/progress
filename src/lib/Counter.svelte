@@ -46,34 +46,6 @@
 		margin: 1rem 0;
 	}
 
-	.counter button {
-		width: 2em;
-		padding: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border: 0;
-		background-color: transparent;
-		touch-action: manipulation;
-		color: var(--text-color);
-		font-size: 2rem;
-	}
-
-	.counter button:hover {
-		background-color: var(--secondary-color);
-	}
-
-	svg {
-		width: 25%;
-		height: 25%;
-	}
-
-	path {
-		vector-effect: non-scaling-stroke;
-		stroke-width: 2px;
-		stroke: var(--text-color);
-	}
-
 	.counter-viewport {
 		width: 8em;
 		height: 4em;
