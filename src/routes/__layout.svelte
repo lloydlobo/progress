@@ -2,12 +2,16 @@
 	import Header from '$lib/header/Header.svelte';
 	import '../app.scss';
 
+	import Cursor from '$lib/Cursor.svelte';
 	let thisYear = new Date().getFullYear();
 </script>
 
 <Header />
 
 <main>
+	<div class=" h-screen absolute left-0 bottom-0 right-0">
+		<Cursor />
+	</div>
 	<slot />
 </main>
 
@@ -27,7 +31,6 @@
 		>
 	</div>
 	<span>&copy {thisYear} <a href="https://github.com/lloydlobo">Lloyd Lobo</a></span>
-	<!-- <p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p> -->
 </footer>
 
 <style>

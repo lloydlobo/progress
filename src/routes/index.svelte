@@ -12,8 +12,8 @@
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Project Progress" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" /> -->
 </svelte:head>
 
 <section class="grid gap-y-10 ">
