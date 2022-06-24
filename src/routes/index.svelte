@@ -42,11 +42,14 @@
 		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
 			{#if id % 2 != 0}
 				<!-- inline styles but no variables for property names -->
-				<div class="container left text-white">
-					<div class="project content bg-blend-luminosity " style="background-image: url({srcBg});">
+				<div class="container left ">
+					<div class="project bg-cover overflow-hidden content bg-blend-multiply">
+						<!-- style="background-image: url({srcBg});" -->
 						<div class="project-content p-4 backdrop-blur-sm  ">
-							<h2 class="font-serif font-bold text-xl"><a {href}>{name}</a></h2>
-							<p class="text-white">{content}</p>
+							<h2 class="font-serif font-bold text-xl">
+								<a class="text-neutral-600 font-thin text-2xl" {href}>{name}</a>
+							</h2>
+							<p class="">{content}</p>
 							<sub>{month} {year}</sub>
 							<div class="show-me-the-code">
 								<a href={live}>Live Preview</a>
@@ -54,7 +57,6 @@
 									<div class="icon-github">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
 											stroke="currentColor"
 											stroke-width="0"
 											viewBox="0 0 1024 1024"
@@ -73,11 +75,14 @@
 
 			{#if id % 2 == 0}
 				<!-- inline styles but no variables for property names -->
-				<div class="container right text-white">
-					<div class="project content bg-blend-luminosity " style="background-image: url({srcBg});">
+				<div class="container right">
+					<div class="project content bg-blend-luminosity">
+						<!-- style="background-image: url({srcBg}); -->
 						<div class="project-content p-4 backdrop-blur-sm">
-							<h2 class="font-serif font-bold text-xl"><a {href}>{name}</a></h2>
-							<p class="text-white">{content}</p>
+							<h2 class="font-serif font-bold text-xl">
+								<a class="text-neutral-600 font-thin text-2xl" {href}>{name}</a>
+							</h2>
+							<p class=" ">{content}</p>
 							<sub>{month} {year}</sub>
 							<div class="show-me-the-code">
 								<a href={live}>Live Preview</a>
@@ -85,7 +90,6 @@
 									<div class="icon-github">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											fill="currentColor"
 											stroke="currentColor"
 											stroke-width="0"
 											viewBox="0 0 1024 1024"
@@ -128,13 +132,6 @@
 
 	.title {
 		font-family: Georgia, 'Times New Roman', Times, serif;
-	}
-
-	.project {
-		/* background-position: center; */
-		background-clip: border-box;
-		height: auto;
-		background-repeat: no-repeat;
 	}
 
 	/* https://www.w3schools.com/howto/howto_css_timeline.asp */
@@ -229,6 +226,14 @@
 		background-color: white;
 		position: relative;
 		border-radius: 6px;
+	}
+
+	/* project wrapper hosts background image */
+	.project {
+		/* background-position: center; */
+		background-clip: border-box;
+		height: auto;
+		background-repeat: no-repeat;
 	}
 
 	/* Media queries - Responsive timeline on screens less than 600px wide */
