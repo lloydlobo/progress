@@ -6,7 +6,7 @@
 
 <header class="z-50 flex py-4 sticky top-0 px-8 drop-shadow-md backdrop-blur-sm">
 	<div class="corner flex-1">
-		<a href="https://kit.svelte.dev">
+		<a href="/">
 			<img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" />
 		</a>
 	</div>
