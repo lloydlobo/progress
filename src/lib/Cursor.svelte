@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
 
-	let coords = spring({ x: -0, y: -0 }, { stiffness: 0.1, damping: 0.25 });
+	let coords = spring({ x: -0, y: -20 }, { stiffness: 0.1, damping: 0.25 });
 	let size = spring(10);
 </script>
 
-<div class="hidden absolute right-4">
+<div class="absolute right-4 hidden">
 	<label for="">
 		<div>stiffness ({coords.stiffness})</div>
 		<input bind:value={coords.stiffness} type="range" min="0" max="1" step="0.01" />
@@ -17,7 +17,7 @@
 </div>
 
 <svg
-	class="absolute left-1"
+	class="absolute  left-1   z-0"
 	on:mousemove={(e) => coords.set({ x: e.clientX, y: e.clientY })}
 	on:mousedown={() => size.set(30)}
 	on:mouseup={() => size.set(10)}

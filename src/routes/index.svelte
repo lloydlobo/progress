@@ -1,39 +1,110 @@
 <script context="module" lang="ts">
 	import { StoreCreations } from '$lib/store';
+	import { createEventDispatcher } from 'svelte';
 	export const prerender = true;
-
-	// function trimStringTemplateLiterals(str: string) { const div = document.createElement('div'); div.innerHTML = str.trim().slice(0, str.length); document.body.appendChild(div); }
 </script>
 
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
+
+	const dispatch = createEventDispatcher();
+	let inputSearchText = '';
+	$: inputSearchText;
+	let projects = new Array();
+	let projectTitle = '';
+	let projectBody = '';
+	$: projects;
+	$: projectTitle = '';
+	$: projectBody = '';
+	// async function awaitData() {
+	const url = `https://jsonplaceholder.typicode.com/posts`;
+
+	// fetch(url) .then((res) => res.json()) .then((data) => data.forEach((project: any) => { projects.push(project); projectTitle = project.title; projectBody = project.body; }));
+
+	const searchProjects = async (event) => {
+		if (!event.target.value) return;
+		const searchText: string = event.target.value.toLowerCase();
+		const searchInputHasNoText = searchText === '';
+
+		const res = await fetch(url); // ok: true
+		const data = await res.json();
+
+		// Get matches to current text input
+		let matches = data.filter((project: any) => {
+			const regex = new RegExp(`^${searchText}`, 'gi'); // ^ ==> Starts with || g ==> global i==> case-insensitive flags
+			return project.title.match(regex) || project.body.match(regex);
+		});
+
+		if (searchInputHasNoText) {
+			matches = []; // clear out the results when we're done
+		}
+		console.log(matches);
+
+		outputHtml(matches);
+	};
+
+	// Show results in HTML
+	const outputHtml = async (matches: any[]) => {
+		if (matches.length > 0) {
+			matches.map(async (match) => {
+				projects = [...projects, { title: await match.title, body: await match.body }];
+			});
+		}
+	};
 </script>
 
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Project Progress" />
-	<!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
-	<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" /> -->
 </svelte:head>
 
 <section class="grid gap-y-10 ">
 	<div class="hero-title text-center">
-		<h1 class="title font-serif mb-0 text-8xl">
-			<span class="welcome">
-				<!-- <picture> <source srcset="svelte-welcome.webp" type="image/webp" /> <img src="svelte-welcome.png" alt="Welcome" /> </picture> -->
-			</span>
-			The Evocreation
-		</h1>
-		<!-- <sub class="subtitle text-center"> Progress <strong>rather than</strong> perfection.  </sub> -->
+		<h1 class="title mb-0 font-serif text-8xl">The Evocreation</h1>
 	</div>
 
-	<super class="text-4xl tracking-wide font- text-center text-gray-600 ">
+	<super class=" text-center text-4xl tracking-wide text-gray-600 ">
 		A collection of projects built along the way while focussing on <b>progress</b> than perfection.
 	</super>
+</section>
 
-	<section class="flex">
-		<Counter />
-	</section>
+<section class="search-feature z-50 mx-auto">
+	<div class="search-wrapper z-10 mx-auto p-4">
+		<form action="" class="form-search grid items-center justify-center gap-1 text-center ">
+			<label for="search" class="search-label text-slate-500">Search for Apps</label>
+			<!-- SEARCH BAR -->
+			<input
+				on:input={searchProjects}
+				bind:value={inputSearchText}
+				type="search"
+				placeholder="Type anything you are looking for.."
+				name=""
+				id="search"
+				class="search-input rounded-xl px-4 py-2 font-bold placeholder:text-sm  placeholder:font-light target:bg-slate-800 hover:text-slate-50 focus:bg-slate-800"
+			/>
+		</form>
+	</div>
+
+	<div class="project-cards  mx-auto flex flex-wrap gap-2">
+		{#each projects as project}
+			{#if inputSearchText.length > 0}
+				<div
+					id="cards"
+					class=" card glass h-1/4 w-1/4 items-center justify-center self-center bg-slate-800 p-2 align-middle shadow-lg"
+				>
+					<div class="header m-0 p-0 text-white">{project.title}</div>
+					<div class="body  justify-center self-center text-center">
+						<p>{projectBody}</p>
+						<a href="/" class="text-xs font-bold text-rose-400">View Live</a>
+					</div>
+				</div>
+			{/if}
+		{/each}
+	</div>
+</section>
+
+<section class="counter mx-auto">
+	<Counter />
 </section>
 
 <!-- {#each $StoreCodepen as { id, html }} {#if id >= 0} {trimStringTemplateLiterals(html)} {/if} {/each} -->
@@ -42,16 +113,16 @@
 		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
 			{#if id % 2 != 0}
 				<!-- inline styles but no variables for property names -->
-				<div class="container left ">
-					<div class="project bg-cover overflow-hidden content bg-blend-multiply">
+				<div class="left container ">
+					<div class="project content overflow-hidden bg-cover bg-blend-multiply">
 						<!-- style="background-image: url({srcBg});" -->
 						<div class="project-content p-4 backdrop-blur-sm  ">
-							<h2 class="font-serif font-bold text-xl mb-3">
-								<a class="text-neutral font-thin text-2xl" {href}>{name}</a>
+							<h2 class="mb-3 font-serif text-xl font-bold">
+								<a class="text-2xl font-thin text-neutral" {href}>{name}</a>
 							</h2>
 							<p class="">{content}</p>
 							<sub>{month} {year}</sub>
-							<div class="py-2 show-me-the-code items-center gap-2 flex align-center justify-start">
+							<div class="show-me-the-code align-center flex items-center justify-start gap-2 py-2">
 								<a {href} {alt}>
 									<div class="icon-github">
 										<svg
@@ -68,7 +139,7 @@
 								</a>
 								<a
 									href={live}
-									class="btn-outline bg-white text-xs btn-ghost border-slate-400 hover:no-underline rounded-2xl p-1 px-4 "
+									class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
 									>Live</a
 								>
 							</div>
@@ -79,16 +150,16 @@
 
 			{#if id % 2 == 0}
 				<!-- inline styles but no variables for property names -->
-				<div class="container right">
+				<div class="right container">
 					<div class="project content bg-blend-luminosity">
 						<!-- style="background-image: url({srcBg}); -->
 						<div class="project-content p-4 backdrop-blur-sm">
-							<h2 class="font-serif font-bold text-xl mb-3">
-								<a class="text-neutral-600 text-neutral font-light text-2xl" {href}>{name}</a>
+							<h2 class="mb-3 font-serif text-xl font-bold">
+								<a class="text-neutral-600 text-2xl font-light text-neutral" {href}>{name}</a>
 							</h2>
 							<p class=" ">{content}</p>
 							<sub>{month} {year}</sub>
-							<div class="py-2 show-me-the-code items-center gap-3 flex align-center justify-start">
+							<div class="show-me-the-code align-center flex items-center justify-start gap-3 py-2">
 								<a {href} {alt}>
 									<div class="icon-github">
 										<svg
@@ -105,7 +176,7 @@
 								</a>
 								<a
 									href={live}
-									class="btn-outline bg-white text-xs btn-ghost border-slate-400 hover:no-underline rounded-2xl p-1 px-4 "
+									class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
 									>Live</a
 								>
 							</div>
@@ -179,7 +250,7 @@
 		right: -17px;
 		background-color: white;
 		/* border: 4px solid rgb(255, 62, 0); */
-		@apply border-orange-600 border-solid border-4;
+		@apply border-4 border-solid border-orange-600;
 		top: 15px;
 		border-radius: 50%;
 		z-index: 1;
