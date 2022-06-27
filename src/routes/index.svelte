@@ -68,35 +68,34 @@
 	</super>
 </section>
 
-<section class="search-feature z-50 mx-auto">
-	<div class="search-wrapper z-10 mx-auto p-4">
+<section class="search-feature z-50">
+	<div class="search-wrapper z-10 mx-auto p-4 py-6">
 		<form action="" class="form-search grid items-center justify-center gap-1 text-center ">
-			<label for="search" class="search-label text-slate-500">Search for Apps</label>
+			<label for="search" class="search-label hidden text-slate-500">Search for Apps</label>
 			<!-- SEARCH BAR -->
 			<input
 				on:input={searchProjects}
 				bind:value={inputSearchText}
 				type="search"
-				placeholder="Type anything you are looking for.."
+				placeholder="Search projects or any category"
 				name=""
 				id="search"
-				class="search-input rounded-xl px-4 py-2 font-bold placeholder:text-sm  placeholder:font-light target:bg-slate-800 hover:text-slate-50 focus:bg-slate-800"
+				class="search-input rounded-full px-4 py-2 font-bold placeholder:text-sm  placeholder:font-light "
 			/>
 		</form>
 	</div>
 
-	<div class="project-cards  mx-auto flex flex-wrap gap-2">
+	<div class="project-cards  grid gap-2">
 		{#each projects as project}
 			{#if inputSearchText.length > 0}
-				<div
-					id="cards"
-					class=" card glass h-1/4 w-1/4 items-center justify-center self-center bg-slate-800 p-2 align-middle shadow-lg"
-				>
-					<div class="header m-0 p-0 text-white">{project.title}</div>
-					<div class="body  justify-center self-center text-center">
-						<p>{projectBody}</p>
-						<a href="/" class="text-xs font-bold text-rose-400">View Live</a>
-					</div>
+				<div id="card" class="card grid gap-2 bg-slate-50 p-4 shadow-lg ">
+					<h3 class="title text-md font-serif font-light capitalize text-slate-700">
+						{project.title}
+					</h3>
+					<p class="body grid justify-between text-sm">
+						{project.body}
+					</p>
+					<a href="/" class="place-self-start text-xs font-bold text-rose-500"> View Live </a>
 				</div>
 			{/if}
 		{/each}
@@ -314,7 +313,10 @@
 		height: auto;
 		background-repeat: no-repeat;
 	}
-
+	.project-cards {
+		/* grid-template-columns: repeat(auto-fit, minmax(30%, 1fr)); */
+		grid-template-columns: repeat(auto-fit, minmax(clamp(333px, 1vw + 1rem, 40vw), 1fr));
+	}
 	/* Media queries - Responsive timeline on screens less than 600px wide */
 	@media screen and (max-width: 600px) {
 		/* Place the timelime to the left */
