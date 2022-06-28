@@ -9,14 +9,14 @@
 <Header />
 
 <main>
-	<div class=" h-screen absolute left-0 bottom-0 right-0">
+	<div class=" absolute left-0 bottom-0 right-0 -z-10 h-screen">
 		<Cursor />
 	</div>
 	<slot />
 </main>
 
 <footer class="text-sm">
-	<div class="flex items-center gap-x-1 justify-center">
+	<div class="flex items-center justify-center gap-x-1">
 		Made with Love <svg
 			stroke="currentColor"
 			fill="red"

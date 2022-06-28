@@ -1,63 +1,40 @@
 <script context="module" lang="ts">
 	import { StoreCreations } from '$lib/store';
-	import { createEventDispatcher } from 'svelte';
+	// import { createEventDispatcher } from 'svelte';
 	export const prerender = true;
 </script>
 
 <script lang="ts">
 	import Counter from '$lib/Counter.svelte';
+	import {
+		ProjectsStore,
+		searchMatchesProjects,
+		loadProjects,
+		url as URL
+	} from '$lib/store/fetchProjectsStore';
 
-	const dispatch = createEventDispatcher();
-	let inputSearchText = '';
-	$: inputSearchText;
-	let projects = new Array();
-	let projectTitle = '';
-	let projectBody = '';
-	$: projects;
-	$: projectTitle = '';
-	$: projectBody = '';
-	// async function awaitData() {
-	const url = `https://jsonplaceholder.typicode.com/posts`;
+	let bindSearchInput = '';
+	let datas: any[];
+	$: datas = new Array();
 
-	// fetch(url) .then((res) => res.json()) .then((data) => data.forEach((project: any) => { projects.push(project); projectTitle = project.title; projectBody = project.body; }));
+	const handleSearch = async () => {
+		const fetchData = await loadProjects(URL);
+		const matchAndUpdateReadableData = await searchMatchesProjects(fetchData, bindSearchInput);
 
-	const searchProjects = async (event) => {
-		if (!event.target.value) return;
-		const searchText: string = event.target.value.toLowerCase();
-		const searchInputHasNoText = searchText === '';
-
-		const res = await fetch(url); // ok: true
-		const data = await res.json();
-
-		// Get matches to current text input
-		let matches = data.filter((project: any) => {
-			const regex = new RegExp(`^${searchText}`, 'gi'); // ^ ==> Starts with || g ==> global i==> case-insensitive flags
-			return project.title.match(regex) || project.body.match(regex);
-		});
-
-		if (searchInputHasNoText) {
-			matches = []; // clear out the results when we're done
-		}
-		console.log(matches);
-
-		outputHtml(matches);
-	};
-
-	// Show results in HTML
-	const outputHtml = async (matches: any[]) => {
-		if (matches.length > 0) {
-			matches.map(async (match) => {
-				projects = [...projects, { title: await match.title, body: await match.body }];
-			});
-		}
+		datas = matchAndUpdateReadableData;
+		return datas;
 	};
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Project Progress" />
+	<title>Evocreation | Home</title>
+	<meta name="description" content="Projects Progress" />
 </svelte:head>
 
+<!-- Sidebar -->
+<!-- <aside class="fixed bottom-0 left-0 top-0 grid h-screen w-40 gap-2 overflow-auto bg-slate-300 px-2 text-xs text-slate-700" > {#each $ProjectsStore as Project, i (Project.id)} <div class="rounded bg-slate-100 py-1 px-1 shadow"> <span class="">{i + 1}: {Project.title}</span> </div> {/each} </aside> -->
+
+<!--  -->
 <section class="grid gap-y-10 ">
 	<div class="hero-title text-center">
 		<h1 class="title mb-0 font-serif text-8xl">The Evocreation</h1>
@@ -74,8 +51,8 @@
 			<label for="search" class="search-label hidden text-slate-500">Search for Apps</label>
 			<!-- SEARCH BAR -->
 			<input
-				on:input={searchProjects}
-				bind:value={inputSearchText}
+				on:input={handleSearch}
+				bind:value={bindSearchInput}
 				type="search"
 				placeholder="Search projects or any category"
 				name=""
@@ -86,18 +63,12 @@
 	</div>
 
 	<div class="project-cards  grid gap-2">
-		{#each projects as project}
-			{#if inputSearchText.length > 0}
-				<div id="card" class="card grid gap-2 bg-slate-50 p-4 shadow-lg ">
-					<h3 class="title text-md font-serif font-light capitalize text-slate-700">
-						{project.title}
-					</h3>
-					<p class="body grid justify-between text-sm">
-						{project.body}
-					</p>
-					<a href="/" class="place-self-start text-xs font-bold text-rose-500"> View Live </a>
-				</div>
-			{/if}
+		{#each datas as data (data.id)}
+			<div id="card" class="card grid gap-2 bg-slate-50 p-4 shadow-lg ">
+				<h3 class="title text-md font-serif font-light capitalize text-slate-700">{data.title}</h3>
+				<p class="body grid justify-between text-sm">{data.body}</p>
+				<a href="/" class="place-self-start text-xs font-bold text-rose-500"> View Live</a>
+			</div>
 		{/each}
 	</div>
 </section>
@@ -106,20 +77,17 @@
 	<Counter />
 </section>
 
-<!-- {#each $StoreCodepen as { id, html }} {#if id >= 0} {trimStringTemplateLiterals(html)} {/if} {/each} -->
 <section>
 	<div class="timeline">
 		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
 			{#if id % 2 != 0}
-				<!-- inline styles but no variables for property names -->
 				<div class="left container ">
 					<div class="project content overflow-hidden bg-cover bg-blend-multiply">
-						<!-- style="background-image: url({srcBg});" -->
 						<div class="project-content p-4 backdrop-blur-sm  ">
 							<h2 class="mb-3 font-serif text-xl font-bold">
 								<a class="text-2xl font-thin text-neutral" {href}>{name}</a>
 							</h2>
-							<p class="">{content}</p>
+							<p>{content}</p>
 							<sub>{month} {year}</sub>
 							<div class="show-me-the-code align-center flex items-center justify-start gap-2 py-2">
 								<a {href} {alt}>
@@ -148,15 +116,13 @@
 			{/if}
 
 			{#if id % 2 == 0}
-				<!-- inline styles but no variables for property names -->
 				<div class="right container">
 					<div class="project content bg-blend-luminosity">
-						<!-- style="background-image: url({srcBg}); -->
 						<div class="project-content p-4 backdrop-blur-sm">
 							<h2 class="mb-3 font-serif text-xl font-bold">
 								<a class="text-neutral-600 text-2xl font-light text-neutral" {href}>{name}</a>
 							</h2>
-							<p class=" ">{content}</p>
+							<p>{content}</p>
 							<sub>{month} {year}</sub>
 							<div class="show-me-the-code align-center flex items-center justify-start gap-3 py-2">
 								<a {href} {alt}>
@@ -197,11 +163,8 @@
 	}
 
 	section {
-		/* display: flex; */
-		/* flex-direction: column; */
 		justify-content: center;
 		align-items: center;
-		/* flex: 1; */
 	}
 
 	* {
@@ -248,7 +211,6 @@
 		height: 25px;
 		right: -17px;
 		background-color: white;
-		/* border: 4px solid rgb(255, 62, 0); */
 		@apply border-4 border-solid border-orange-600;
 		top: 15px;
 		border-radius: 50%;
