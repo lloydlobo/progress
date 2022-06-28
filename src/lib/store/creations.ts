@@ -3,6 +3,18 @@ import { writable } from 'svelte/store';
 
 export const StoreCreations = writable([
 	{
+		id: 11,
+		year: 2022,
+		month: 6,
+		name: 'Tensifier',
+		href: 'https://github.com/lloydlobo/tense-text-transform',
+		alt: 'Change the tense of your sentences with this simple app.',
+		live: 'https://tensifier.vercel.app/',
+		content:
+			'Change the tense of your sentences with this simple app.',
+		srcBg: 'https://picsum.photos/416/300/?blur=2'
+	},
+	{
 		id: 10,
 		year: 2022,
 		month: 6,
