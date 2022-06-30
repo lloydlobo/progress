@@ -103,7 +103,7 @@ export const StoreCreations = writable([
 		name: "Thor's Crypto Security ",
 		href: 'https://github.com/lloydlobo/thors-landing',
 		alt: 'Thor"s Crypto Security',
-		live: 'https://github.com/lloydlobo/odin-thors-landing',
+		live: 'https://lloydlobo.github.io/odin-thors-landing',
 		content:
 			"Like Thor's mighty hammer, wield the power of security for your crypto needs. Back up your wallet and leave it to Thor to protect it at all costs",
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
