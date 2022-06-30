@@ -115,7 +115,7 @@ export const StoreCreations = writable([
 		name: 'Homely Recipes',
 		href: 'https://github.com/lloydlobo/homely-recipes',
 		alt: 'Homely recipes',
-		live: 'https://homelyrecipes.netlify.app/',
+		live: 'lloydlobo.github.io/homely-recipes/',
 		content: 'The site that recommends hand-picked home-made recipes prepared with love and care.',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
 	},
