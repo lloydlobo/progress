@@ -44,7 +44,7 @@ export const StoreCreations = writable([
 		name: 'Neura Driver: Neural Network & ML',
 		href: 'https://github.com/lloydlobo/neura-driver',
 		alt: 'Self Driving Car Web App',
-		live: 'neura-driver.vercel.app',
+		live: 'https://neura-driver.vercel.app',
 		content:
 			'A simple self-driving car application with a neural network model. Experiment with cloning generation of clone cars to observe the car which favors the local conditions (traffic). Credits: Dr. Radu Mariescu-Istodor',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
