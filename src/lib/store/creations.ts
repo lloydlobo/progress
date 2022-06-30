@@ -41,10 +41,10 @@ export const StoreCreations = writable([
 		id: 8,
 		year: 2022,
 		month: 6,
-		name: 'Self Driving Car: Neural Network & ML',
-		href: 'https://github.com/lloydlobo/mononom-web-apps/tree/main/apps/nnwml/self-driving-car',
+		name: 'Neura Driver: Neural Network & ML',
+		href: 'https://github.com/lloydlobo/neura-driver',
 		alt: 'Self Driving Car Web App',
-		live: 'https://github.com/lloydlobo/mononom-web-apps/tree/main/apps/nnwml/self-driving-car',
+		live: 'neura-driver.vercel.app',
 		content:
 			'A simple self-driving car application with a neural network model. Experiment with cloning generation of clone cars to observe the car which favors the local conditions (traffic). Credits: Dr. Radu Mariescu-Istodor',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
