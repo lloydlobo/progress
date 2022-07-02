@@ -3,6 +3,17 @@ import { writable } from 'svelte/store';
 
 export const StoreCreations = writable([
 	{
+		id: 12,
+		year: 2022,
+		month: 7,
+		name: 'Commonchat',
+		href: 'https://github.com/lloydlobo/chat-decentralized',
+		alt: 'A decentralized chat room.',
+		live: 'https://commonchat.vercel.app/',
+		content: 'A decentralized chat room using Gun.js.',
+		srcBg: 'https://picsum.photos/416/300/?blur=2'
+	},
+	{
 		id: 11,
 		year: 2022,
 		month: 6,
@@ -144,5 +155,3 @@ export const StoreCreations = writable([
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
 	}
 ]);
-
-// https://picsum.photos/
