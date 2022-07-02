@@ -152,7 +152,10 @@
 		{/each}
 	</div>
 </section>
-
+<section>
+<blockquote>Try to put well into practice what you already know. In so doing, you will, in good time, discover the hidden things you now inquire about</blockquote>
+<cite>— Rembrandt</cite>
+</section>
 <style>
 	.project {
 		background-image: var(--background-image);
