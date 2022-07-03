@@ -3,12 +3,23 @@ import { writable } from 'svelte/store';
 
 export const StoreCreations = writable([
 	{
+		id: 13,
+		year: 2022,
+		month: 7,
+		name: 'Quickpath',
+		href: 'https://github.com/lloydlobo/quickpath',
+		alt: 'Quickpath',
+		live: 'https://quickpath-algo.vercel.app/',
+		content: 'Visualize shortest path between two points with algorithms.',
+		srcBg: 'https://picsum.photos/416/300/?blur=2'
+	},
+	{
 		id: 12,
 		year: 2022,
 		month: 7,
 		name: 'Commonchat',
 		href: 'https://github.com/lloydlobo/chat-decentralized',
-		alt: 'A decentralized chat room.',
+		alt: 'Commonchat app',
 		live: 'https://commonchat.vercel.app/',
 		content: 'A decentralized chat room using Gun.js.',
 		srcBg: 'https://picsum.photos/416/300/?blur=2'
@@ -19,7 +30,7 @@ export const StoreCreations = writable([
 		month: 6,
 		name: 'Tensifier',
 		href: 'https://github.com/lloydlobo/tense-text-transform',
-		alt: 'Change the tense of your sentences with this simple app.',
+		alt: 'Tensifier app.',
 		live: 'https://tensifier.vercel.app/',
 		content:
 			'Change the tense of your sentences with this simple app.',
