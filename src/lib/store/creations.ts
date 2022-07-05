@@ -3,6 +3,17 @@ import { writable } from 'svelte/store';
 
 export const StoreCreations = writable([
 	{
+		id: 14,
+		year: 2022,
+		month: 7,
+		name: 'Sortviz',
+		href: 'https://github.com/lloydlobo/sortviz',
+		alt: 'sortviz - vizualize sorting algorithms',
+		live: 'https://sortviz.vercel.app/',
+		content: 'Vizualize sorting algorithms in slow motion.',
+		srcBg: 'https://picsum.photos/416/300/?blur=2'
+	},
+	{
 		id: 13,
 		year: 2022,
 		month: 7,
