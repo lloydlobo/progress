@@ -3,6 +3,17 @@ import { writable } from 'svelte/store';
 
 export const StoreCreations = writable([
 	{
+		id: 15,
+		year: 2022,
+		month: 7,
+		name: 'Live API',
+		href: 'https://github.com/lloydlobo/live-api',
+		alt: 'Demo API to host on RapidAPI',
+		live: 'https://rapidapi.com/lloydlobo/api/money-live/',
+		content: 'A quick API to scrape relevant information for educational purpose or as one sees fit. Build & Sell API\'s on the web.',
+		srcBg: 'https://picsum.photos/416/300/?blur=2'
+	},
+	{
 		id: 14,
 		year: 2022,
 		month: 7,
