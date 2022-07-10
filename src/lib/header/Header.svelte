@@ -5,23 +5,19 @@
 </script>
 
 <header
-	class="z-50 flex items-center justify-center py-4 max-w-7xl mx-auto sticky top-0 px-8 drop-shadow-md backdrop-blur-sm"
+	class="sticky top-0 z-50 mx-auto flex max-w-7xl items-center justify-center py-4 px-8 drop-shadow-md backdrop-blur-sm"
 >
 	<div class="corner flex-1">
-		<div class="logo text-lg font-serif mb-0  hover:text-gray-900">
-			<a href="/" class="flex gap-0 text-neutral hover:text-gray-900 tracking-widest"
-				><span class="bold">ev<span class=" text-red-700 font-bold">o</span></span><span class=""
+		<div class="logo mb-0 font-serif text-lg  hover:text-gray-900">
+			<a href="/" class="flex gap-0 tracking-widest text-neutral hover:text-gray-900"
+				><span class="bold">ev<span class=" font-bold text-red-700">o</span></span><span class=""
 					>creat<span class="">i</span><span class="font-bold text-red-700">o</span>n</span
 				></a
 			>
 		</div>
-		<!-- <img class="object-contain bg-opacity-95 rounded w-16 h-auto" src={logo} alt="Progress" /> -->
 	</div>
 
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
 			<li class:active={$page.url.pathname === '/about'}>
@@ -31,9 +27,6 @@
 				<a sveltekit:prefetch href="/todos">Todos</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
@@ -47,41 +40,12 @@
 		justify-content: space-between;
 	}
 
-	// .corner {
-	// 	width: 3em;
-	// 	height: 3em;
-	// }
-
-	// .corner a {
-	// 	display: flex;
-	// 	align-items: center;
-	// 	justify-content: center;
-	// 	width: 100%;
-	// 	height: 100%;
-	// }
-
-	.corner img {
-		// width: 2em;
-		// height: 2em;
-		object-fit: contain;
-	}
-
 	nav {
 		display: flex;
 		justify-content: center;
 		// align-items: flex-end;
 		/* --background: rgba(255, 255, 255, 0.7); */
 	}
-
-	/* svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	} */
-
-	/* path {
-		fill: var(--background);
-	} */
 
 	ul {
 		position: relative;
@@ -131,6 +95,6 @@
 		color: var(--accent-color);
 	}
 	.logo a:hover {
-		@apply text-gray-900 no-underline shadow-sm transition-all ease-in-out duration-200 animate-pulse;
+		@apply animate-pulse text-gray-900 no-underline shadow-sm transition-all duration-200 ease-in-out;
 	}
 </style>
