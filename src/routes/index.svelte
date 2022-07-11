@@ -1,10 +1,8 @@
 <script context="module" lang="ts">
-	import { StoreCreations } from '$lib/store';
-	// import { createEventDispatcher } from 'svelte';
-	export const prerender = true;
-</script>
+	import { onMount } from 'svelte';
+	import { projects, loadSupaProjects } from '$lib/store/creations';
+	import { createCount } from '$lib/store/storeCount';
 
-<script lang="ts">
 	import Counter from '$lib/Counter.svelte';
 	import {
 		ProjectsStore,
@@ -12,11 +10,14 @@
 		loadProjects,
 		url as URL
 	} from '$lib/store/fetchProjectsStore';
+	export const prerender = true;
+</script>
 
+<script lang="ts">
 	let bindSearchInput = '';
+
 	let datas: any[];
 	$: datas = new Array();
-
 	const handleSearch = async () => {
 		const fetchData = await loadProjects(URL);
 		const matchAndUpdateReadableData = await searchMatchesProjects(fetchData, bindSearchInput);
@@ -24,6 +25,8 @@
 		datas = matchAndUpdateReadableData;
 		return datas;
 	};
+
+	onMount(loadSupaProjects); // lags
 </script>
 
 <svelte:head>
@@ -31,11 +34,7 @@
 	<meta name="description" content="Projects Progress" />
 </svelte:head>
 
-<!-- Sidebar -->
-<!-- <aside class="fixed bottom-0 left-0 top-0 grid h-screen w-40 gap-2 overflow-auto bg-slate-300 px-2 text-xs text-slate-700" > {#each $ProjectsStore as Project, i (Project.id)} <div class="rounded bg-slate-100 py-1 px-1 shadow"> <span class="">{i + 1}: {Project.title}</span> </div> {/each} </aside> -->
-
-<!--  -->
-<section class="grid gap-y-10 ">
+<section class="flow grid gap-y-10 ">
 	<div class="hero-title text-center">
 		<h1 class="title mb-0 font-serif text-8xl">The Evocreation</h1>
 	</div>
@@ -79,83 +78,103 @@
 
 <section>
 	<div class="timeline">
-		{#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }}
-			{#if id % 2 != 0}
-				<div class="left container ">
-					<div class="project content overflow-hidden bg-cover bg-blend-multiply">
-						<div class="project-content p-4 backdrop-blur-sm  ">
-							<h2 class="mb-3 font-serif text-xl font-bold">
-								<a class="text-2xl font-thin text-neutral" {href}>{name}</a>
-							</h2>
-							<p>{content}</p>
-							<sub>{month} {year}</sub>
-							<div class="show-me-the-code align-center flex items-center justify-start gap-2 py-2">
-								<a {href} {alt}>
-									<div class="icon-github">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											stroke="currentColor"
-											stroke-width="0"
-											viewBox="0 0 1024 1024"
-											><path
-												stroke="none"
-												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-											/></svg
+		{#await projects}
+			<p>Loading..</p>
+		{:then}
+			{#if $projects}
+				{#each $projects as project (project.date)}
+					<!-- {#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }} -->
+					{#if project.id % 2 != 0}
+						<div class="left container ">
+							<div class="project content overflow-hidden bg-cover bg-blend-multiply">
+								<div class="project-content p-4 backdrop-blur-sm  ">
+									<h2 class="mb-3 font-serif text-xl font-bold">
+										<a class="text-2xl font-thin text-neutral" href={project.href}>{project.name}</a
+										>
+									</h2>
+									<p>{project.content}</p>
+									<sub> {project.date}</sub>
+									<div
+										class="show-me-the-code align-center flex items-center justify-start gap-2 py-2"
+									>
+										<a href={project.href} alt={project.alt}>
+											<div class="icon-github">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													stroke="currentColor"
+													stroke-width="0"
+													viewBox="0 0 1024 1024"
+													><path
+														stroke="none"
+														d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+													/></svg
+												>
+											</div>
+										</a>
+										<a
+											href={project.live}
+											class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
+											>Live</a
 										>
 									</div>
-								</a>
-								<a
-									href={live}
-									class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
-									>Live</a
-								>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			{/if}
+					{/if}
 
-			{#if id % 2 == 0}
-				<div class="right container">
-					<div class="project content bg-blend-luminosity">
-						<div class="project-content p-4 backdrop-blur-sm">
-							<h2 class="mb-3 font-serif text-xl font-bold">
-								<a class="text-neutral-600 text-2xl font-light text-neutral" {href}>{name}</a>
-							</h2>
-							<p>{content}</p>
-							<sub>{month} {year}</sub>
-							<div class="show-me-the-code align-center flex items-center justify-start gap-3 py-2">
-								<a {href} {alt}>
-									<div class="icon-github">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											stroke="currentColor"
-											stroke-width="0"
-											viewBox="0 0 1024 1024"
-											><path
-												stroke="none"
-												d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
-											/></svg
+					{#if project.id % 2 == 0}
+						<div class="right container">
+							<div class="project content bg-blend-luminosity">
+								<div class="project-content p-4 backdrop-blur-sm">
+									<h2 class="mb-3 font-serif text-xl font-bold">
+										<a class="text-neutral-600 text-2xl font-light text-neutral" href={project.href}
+											>{project.name}</a
+										>
+									</h2>
+									<p>{project.content}</p>
+									<sub>{project.date} </sub>
+									<div
+										class="show-me-the-code align-center flex items-center justify-start gap-3 py-2"
+									>
+										<a href={project.href} alt={project.alt}>
+											<div class="icon-github">
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													stroke="currentColor"
+													stroke-width="0"
+													viewBox="0 0 1024 1024"
+													><path
+														stroke="none"
+														d="M512 76a447 447 0 0 0-148 870c23 6 20-11 20-22v-78c-136 16-141-74-151-89-18-31-61-39-48-54 30-16 62 4 98 58 27 39 78 32 104 26 6-24 18-45 35-61-141-25-199-111-199-213 0-49 16-95 48-132-20-60 2-112 5-120 58-5 119 42 123 46a435 435 0 0 1 226 0c12-9 68-49 122-44 3 8 25 58 5 118 33 37 49 83 49 132 0 103-59 189-200 213a128 128 0 0 1 38 91v113c1 9 0 18 15 18A448 448 0 0 0 512 76z"
+													/></svg
+												>
+											</div>
+										</a>
+										<a
+											href={project.live}
+											class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
+											>Live</a
 										>
 									</div>
-								</a>
-								<a
-									href={live}
-									class="btn-outline btn-ghost rounded-2xl border-slate-400 bg-white p-1 px-4 text-xs hover:no-underline "
-									>Live</a
-								>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					{/if}
+				{/each}
 			{/if}
-		{/each}
+		{:catch error}
+			<p>Something went wrong: {error}</p>
+		{/await}
 	</div>
 </section>
 <section>
-<blockquote>Try to put well into practice what you already know. In so doing, you will, in good time, discover the hidden things you now inquire about</blockquote>
-<cite>— Rembrandt</cite>
+	<blockquote>
+		Try to put well into practice what you already know. In so doing, you will, in good time,
+		discover the hidden things you now inquire about
+	</blockquote>
+	<cite>— Rembrandt</cite>
 </section>
+
 <style>
 	.project {
 		background-image: var(--background-image);

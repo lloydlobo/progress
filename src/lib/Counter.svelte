@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { spring } from 'svelte/motion';
-	import { StoreCreations } from '$lib/store';
+	import { projects } from '$lib/store/creations';
+	// import { projects, loadSupaProjects } from '$lib/store/creations';
 
-	$: countCreations = $StoreCreations.length;
+	$: countCreations = $projects.length;
 	let count = 0;
 	// $: displayed_count = countCreations;
 
