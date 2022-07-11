@@ -1,8 +1,9 @@
 // cspell:disable
-import { writable, type Writable } from 'svelte/store';
+import { derived, writable, type Writable } from 'svelte/store';
 import { supabase } from '$lib/supabaseClient.js';
-// console.log(supabase);
+import sortBy from 'lodash/sortBy';
 
+// console.log(supabase);
 export const name = writable(['Svelte']);
 
 // Initialize Wriatble Svelte Store
@@ -20,3 +21,10 @@ export const loadSupaProjects = async () => {
 };
 
 export const addProjects = async () => {};
+
+// https://codesandbox.io/s/todo-stores-better-7h538?fontsize=14&file=%2FstoreTodo.js
+// https://stackoverflow.com/a/58058880
+
+export const sortProjects = derived(projects, (projects) =>
+	sortBy(projects, (project: any) => project.id)
+);

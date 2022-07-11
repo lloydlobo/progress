@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
 	import { onMount } from 'svelte';
-	import { projects, loadSupaProjects } from '$lib/store/creations';
+	import { projects, loadSupaProjects, sortProjects } from '$lib/store/creations';
 	import { createCount } from '$lib/store/storeCount';
 
 	import Counter from '$lib/Counter.svelte';
@@ -82,7 +82,8 @@
 			<p>Loading..</p>
 		{:then}
 			{#if $projects}
-				{#each $projects as project (project.date)}
+				<!-- {#each $projects as project (project.date)} -->
+				{#each $sortProjects as project}
 					<!-- {#each $StoreCreations as { id, year, srcBg, live, alt, month, name, href, content }} -->
 					{#if project.id % 2 != 0}
 						<div class="left container ">
