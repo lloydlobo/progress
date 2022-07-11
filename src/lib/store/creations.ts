@@ -26,5 +26,5 @@ export const addProjects = async () => {};
 // https://stackoverflow.com/a/58058880
 
 export const sortProjects = derived(projects, (projects) =>
-	sortBy(projects, (project: any) => project.id)
-);
+	sortBy(projects, (project: any) => project.id * -1)
+); // -1 to reverse the order latest date as id is generative
