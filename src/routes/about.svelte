@@ -14,6 +14,13 @@
 	export const prerender = true;
 </script>
 
+<script>
+	import { sortProjects, projects, loadSupaProjects } from '$lib/store/creations';
+	import { onMount } from 'svelte';
+
+	onMount(loadSupaProjects);
+</script>
+
 <svelte:head>
 	<title>About</title>
 	<meta name="description" content="About Evocreation" />
@@ -24,11 +31,22 @@
 	<sub>Progress timeline</sub>
 	<p>
 		This website act as a quick overview to affirm that one can value progress more than perfection.
-		Looking back at the projects built and how the style and workflow changes is interesting.
-		Keeps one grounded and also optimistic for goals in mind.
+		Looking back at the projects built and how the style and workflow changes is interesting. Keeps
+		one grounded and also optimistic for goals in mind.
 	</p>
 </div>
 
+<!-- <article>
+	{#await $projects}
+		<p>Loading</p>
+	{:then}
+		{#each $sortProjects as project}
+			<p>{project.name}</p>
+		{/each}
+	{:catch error}
+		<p>Something went wrong {error}</p>
+	{/await}
+</article> -->
 <style>
 	.content {
 		width: 100%;

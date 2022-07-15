@@ -4,8 +4,7 @@ A tool to stay motivated and fulfill the dictum of progress over perfection. You
 
 ![evocreation_1](https://user-images.githubusercontent.com/76430758/175270333-d94426ff-d7e1-4dfc-bee3-bd4102bb90c7.gif)  
 ![evocreation_2](https://user-images.githubusercontent.com/76430758/175270659-6d292125-2c8b-4402-9b68-61ce1c39438a.gif)  
-![evocreation_3](https://user-images.githubusercontent.com/76430758/175271957-aeafefbf-74a1-4028-a248-4aa86b0effda.gif)  
-
+![evocreation_3](https://user-images.githubusercontent.com/76430758/175271957-aeafefbf-74a1-4028-a248-4aa86b0effda.gif)
 
 <!-- # create-svelte
 
