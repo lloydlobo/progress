@@ -1,7 +1,7 @@
 // cspell:disable
 import { derived, writable, type Writable } from 'svelte/store';
 import { supabase } from '$lib/supabaseClient.js';
-import sortBy from 'lodash/sortBy';
+import sortBy from 'lodash/sortBy.js';
 
 // console.log(supabase);
 export const name = writable(['Svelte']);
