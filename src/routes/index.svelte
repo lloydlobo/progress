@@ -1,15 +1,10 @@
 <script context="module" lang="ts">
 	import { onMount } from 'svelte';
 	import { projects, loadSupaProjects, sortProjects } from '$lib/store/creations';
-	import { createCount } from '$lib/store/storeCount';
+	// import { createCount } from '$lib/store/storeCount';
 
 	import Counter from '$lib/Counter.svelte';
-	import {
-		ProjectsStore,
-		searchMatchesProjects,
-		loadProjects,
-		url as URL
-	} from '$lib/store/fetchProjectsStore';
+	import { searchMatchesProjects, loadProjects, url as URL } from '$lib/store/fetchProjectsStore';
 	export const prerender = true;
 </script>
 
