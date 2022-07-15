@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import { onMount } from 'svelte';
 	import { projects, loadSupaProjects, sortProjects } from '$lib/store/creations';
-	import { createCount } from '$lib/store/storeCount';
+	// import { createCount } from '$lib/store/storeCount';
 
 	import Counter from '$lib/Counter.svelte';
 	import {
